@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Type Ahead 👀</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
-    <ul class="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
-    </ul>
-  </form>
-<script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+<body ng-controller="mainCtrl">
 
-</script>
-  </body>
+
+    <form class="search-form">
+        <input type="text" class="search" placeholder="City or State" ng-keypress="findCity()" ng-model="userInput">
+        <ul class="suggestions" ng-repeat="city in foundCities">
+            <li>{{city.city }}  {{city.population}}</li>
+            <li>{{city.state}}</li>
+        </ul>
+    </form>
+
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/mainCtrl.js" charset="utf-8"></script>
+    <script src="js/mainSvc.js" charset="utf-8"></script>
+</body>
+
 </html>
